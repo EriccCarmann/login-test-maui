@@ -1,4 +1,7 @@
-﻿namespace LoginTestAppMaui
+﻿using LoginTestAppMaui.ViewModels;
+using LoginTestAppMaui.Views;
+
+namespace LoginTestAppMaui
 {
     public partial class App : Application
     {

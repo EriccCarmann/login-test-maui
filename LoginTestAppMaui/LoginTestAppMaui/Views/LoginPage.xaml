@@ -2,11 +2,68 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LoginTestAppMaui.Views.LoginPage"
-             Title="LoginPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             xmlns:viewmodel="clr-namespace:LoginTestAppMaui.ViewModels"
+             x:DataType="viewmodel:LoginViewModel"
+             Title="LoginPage"
+             HideSoftInputOnTapped="True" >
+    <VerticalStackLayout
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        WidthRequest="300">
+        <Label Grid.Row="0" 
+               Text="Log in to your account"
+               FontAttributes="Bold" 
+               FontSize="23"
+               FontFamily="Courier New"
+               HorizontalTextAlignment="Center"/>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
+              Padding="20" 
+              RowSpacing="5">
+            <Label Grid.Row="1" 
+                   Text="Login" 
+                   FontSize="16"
+                   FontFamily="Courier New"
+                   FontAttributes="Bold"/>
+            <Border Grid.Row="2" 
+                    StrokeShape="RoundRectangle 15,15,15,15">
+                <Entry Text="{Binding Login}"
+                       BackgroundColor="#c7dbe0" 
+                       TextColor="#578794" 
+                       HeightRequest="40"/>
+            </Border>
+            <Label Grid.Row="3" 
+                   Text="Email" 
+                   FontSize="16"
+                   FontFamily="Courier New"
+                   FontAttributes="Bold"/>
+            <Border Grid.Row="4" 
+                    StrokeShape="RoundRectangle 15,15,15,15">
+                <Entry BackgroundColor="#c7dbe0" 
+                       TextColor="#578794" 
+                       HeightRequest="40"/>
+            </Border>
+            <Label Grid.Row="5" 
+                   Text="Password" 
+                   FontSize="16"
+                   FontFamily="Courier New"
+                   FontAttributes="Bold"/>
+            <Border Grid.Row="6" 
+                    StrokeShape="RoundRectangle 15,15,15,15">
+                <Entry BackgroundColor="#c7dbe0" 
+                       TextColor="#578794" 
+                       IsPassword="True" 
+                       HeightRequest="50"/>
+            </Border>
+            <Button Command="{Binding LoginCommand}"
+                    Grid.Row="7" 
+                    Text="Continue" 
+                    FontAttributes="Bold" 
+                    FontFamily="Courier New"
+                    TextColor="White" 
+                    Margin="0,20" 
+                    HeightRequest="50" 
+                    CornerRadius="10" 
+                    BackgroundColor="#508390"/>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

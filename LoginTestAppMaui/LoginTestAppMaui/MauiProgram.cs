@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using LoginTestAppMaui.Services.Abstract;
+using LoginTestAppMaui.Services.Implementation;
+using LoginTestAppMaui.ViewModels;
+using LoginTestAppMaui.Views;
+using Microsoft.Extensions.Logging;
 
 namespace LoginTestAppMaui
 {
@@ -14,6 +18,13 @@ namespace LoginTestAppMaui
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
+
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<MainPage>();
+
+            builder.Services.AddSingleton<LoginViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
