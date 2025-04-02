@@ -13,10 +13,7 @@ namespace LoginTestAppMaui
         {
             base.OnAppearing();
 
-            if (true) 
-            {
-                Shell.Current.GoToAsync("MainPage");
-            }
+
         }
     }
 }

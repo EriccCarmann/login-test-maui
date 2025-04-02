@@ -2,7 +2,9 @@
 {
     public interface IPreferencesService
     {
-        string GetPreference(string key);
+        string GetCurrentUserPreference();
         void SetStringPreference(string value);
+
+        void RemoveCurrentUserPreference();
     }
 }

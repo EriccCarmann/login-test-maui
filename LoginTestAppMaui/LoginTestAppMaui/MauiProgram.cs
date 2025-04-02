@@ -19,14 +19,13 @@ namespace LoginTestAppMaui
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("JAVATEXT.ttf", "JavaneseRegular");
                 });
 
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
 
-            builder.Services.AddSingletonWithShellRoute<LoginPage, LoginViewModel>(nameof(LoginPage));
-            builder.Services.AddSingletonWithShellRoute<MainPage, MainPage>(nameof(MainPage));
-
-            //builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddTransientWithShellRoute<LoginPage, LoginViewModel>(nameof(LoginPage));
+            builder.Services.AddTransientWithShellRoute<MainPage, MainViewModel>(nameof(MainPage));
 
 #if DEBUG
     		builder.Logging.AddDebug();
