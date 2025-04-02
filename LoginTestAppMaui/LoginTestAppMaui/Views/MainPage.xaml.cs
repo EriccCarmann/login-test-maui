@@ -20,12 +20,10 @@ public partial class MainPage : ContentPage
         }
     }
 
-    //protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
-    //{
-    //    base.OnNavigatedFrom(args);
-    //    if (BindingContext is MainViewModel viewModel)
-    //    {
-    //        viewModel.ClearCurrentUser();
-    //    }
-    //}
+    protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+    {
+        var page = Navigation.NavigationStack.LastOrDefault();
+        Navigation.RemovePage(page);
+        base.OnNavigatedFrom(args);
+    }
 }
