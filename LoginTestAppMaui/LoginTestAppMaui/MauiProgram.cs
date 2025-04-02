@@ -1,4 +1,5 @@
-﻿using LoginTestAppMaui.Services.Abstract;
+﻿using CommunityToolkit.Maui;
+using LoginTestAppMaui.Services.Abstract;
 using LoginTestAppMaui.Services.Implementation;
 using LoginTestAppMaui.ViewModels;
 using LoginTestAppMaui.Views;
@@ -13,6 +14,7 @@ namespace LoginTestAppMaui
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -21,10 +23,10 @@ namespace LoginTestAppMaui
 
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
 
-            builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingletonWithShellRoute<LoginPage, LoginViewModel>(nameof(LoginPage));
+            builder.Services.AddSingletonWithShellRoute<MainPage, MainPage>(nameof(MainPage));
 
-            builder.Services.AddSingleton<LoginViewModel>();
+            //builder.Services.AddSingleton<LoginViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

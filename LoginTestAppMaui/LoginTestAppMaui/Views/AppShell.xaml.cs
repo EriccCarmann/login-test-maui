@@ -13,8 +13,6 @@ namespace LoginTestAppMaui
         {
             base.OnAppearing();
 
-            Routing.RegisterRoute("MainPage", typeof(MainPage));
-
             if (true) 
             {
                 Shell.Current.GoToAsync("MainPage");
