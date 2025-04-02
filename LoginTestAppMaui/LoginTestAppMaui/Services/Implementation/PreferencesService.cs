@@ -9,14 +9,19 @@ namespace LoginTestAppMaui.Services.Implementation
 {
     public class PreferencesService : IPreferencesService
     {
-        public string GetPreference(string key)
+        public string GetCurrentUserPreference()
         {
-            return Preferences.Get(key, null);
+            return Preferences.Get("PREF_USER_NAME", null);
+        }
+
+        public void RemoveCurrentUserPreference()
+        {
+            Preferences.Remove("PREF_USER_NAME");
         }
 
         public void SetStringPreference(string value)
         {
-            Preferences.Default.Set("PREF_USER_NAME", value);
+            Preferences.Set("PREF_USER_NAME", value);
         }
     }
 }

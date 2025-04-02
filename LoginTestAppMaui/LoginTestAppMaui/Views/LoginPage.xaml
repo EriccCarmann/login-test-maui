@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+             xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
              x:Class="LoginTestAppMaui.Views.LoginPage"
              xmlns:viewmodel="clr-namespace:LoginTestAppMaui.ViewModels"
              x:DataType="viewmodel:LoginViewModel"
-             Title="LoginPage"
-             HideSoftInputOnTapped="True" >
+             HideSoftInputOnTapped="True"
+             >
     <VerticalStackLayout
         VerticalOptions="Center" 
         HorizontalOptions="Center"
@@ -14,7 +16,7 @@
                Text="Log in to your account"
                FontAttributes="Bold" 
                FontSize="23"
-               FontFamily="Courier New"
+               FontFamily="JavaneseRegular"
                HorizontalTextAlignment="Center"/>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
               Padding="20" 
@@ -22,7 +24,7 @@
             <Label Grid.Row="1" 
                    Text="Login" 
                    FontSize="16"
-                   FontFamily="Courier New"
+                   FontFamily="JavaneseRegular"
                    FontAttributes="Bold"/>
             <Border Grid.Row="2" 
                     StrokeShape="RoundRectangle 15,15,15,15">
@@ -34,23 +36,26 @@
             <Label Grid.Row="3" 
                    Text="Email" 
                    FontSize="16"
-                   FontFamily="Courier New"
+                   FontFamily="JavaneseRegular"
                    FontAttributes="Bold"/>
             <Border Grid.Row="4" 
                     StrokeShape="RoundRectangle 15,15,15,15">
-                <Entry BackgroundColor="#c7dbe0" 
-                       TextColor="#578794" 
-                       HeightRequest="40"/>
+                <Entry 
+                    Text="{Binding Email}"
+                    BackgroundColor="#c7dbe0" 
+                    TextColor="#578794" 
+                    HeightRequest="40"/>
             </Border>
             <Label Grid.Row="5" 
                    Text="Password" 
                    FontSize="16"
-                   FontFamily="Courier New"
+                   FontFamily="JavaneseRegular"
                    FontAttributes="Bold"/>
             <Border Grid.Row="6" 
                     StrokeShape="RoundRectangle 15,15,15,15">
                 <Entry BackgroundColor="#c7dbe0" 
-                       TextColor="#578794" 
+                       TextColor="#578794"
+                       Text="{Binding Password}"
                        IsPassword="True" 
                        HeightRequest="50"/>
             </Border>
@@ -58,7 +63,7 @@
                     Grid.Row="7" 
                     Text="Continue" 
                     FontAttributes="Bold" 
-                    FontFamily="Courier New"
+                    FontFamily="JavaneseRegular"
                     TextColor="White" 
                     Margin="0,20" 
                     HeightRequest="50" 
