@@ -2,8 +2,8 @@
 {
     public interface IPopUpService
     {
-        Task ErrorMessagePopUp(string error);
-        void QuestionPopUp();
-        void ActionSheetPopUp();
+        Task MessagePopUp(string title, string message);
+        Task<bool> QuestionPopUp(string title, string content);
+        Task<string> ActionSheetPopUp(string title, string[] options);
     }
 }

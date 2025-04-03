@@ -1,22 +1,24 @@
 ﻿using LoginTestAppMaui.Services.Abstract;
+using System.Diagnostics;
 
 namespace LoginTestAppMaui.Services.Implementation
 {
     public class PopUpService : IPopUpService
     {
-        public void ActionSheetPopUp()
+        public async Task<string> ActionSheetPopUp(string title, string[] options)
         {
-            throw new NotImplementedException();
+            return await Shell.Current.CurrentPage
+                .DisplayActionSheet(title, "Cancel", null, options);
         }
 
-        public async Task ErrorMessagePopUp(string error)
+        public async Task MessagePopUp(string title, string message)
         {
-            await Shell.Current.CurrentPage.DisplayAlert("Error", error, "OK");
+            await Shell.Current.CurrentPage.DisplayAlert(title, message, "OK");
         }
 
-        public void QuestionPopUp()
+        public async Task<bool> QuestionPopUp(string title, string content)
         {
-            throw new NotImplementedException();
+            return await Shell.Current.CurrentPage.DisplayAlert(title, content, "Yes", "No");
         }
     }
 }

@@ -18,11 +18,28 @@
             FontSize="50"/>
         </HorizontalStackLayout>
         <Button
-            Text="CallErrorMessage"
-            Command="{Binding CallErrorMessage}"
+            Text="Call Message"
+            Command="{Binding CallMessage}"
             FontSize="20"
             HeightRequest="20"
             WidthRequest="200"
+            Margin="0, 30, 0, 30"
+            />
+        <Button
+            Text="Call Question Message"
+            Command="{Binding CallQuestionMessage}"
+            FontSize="20"
+            HeightRequest="20"
+            WidthRequest="200"
+            Margin="0, 0, 0, 30"
+            />
+        <Button
+            Text="Call Options Message"
+            Command="{Binding CallOptionsMessage}"
+            FontSize="20"
+            HeightRequest="20"
+            WidthRequest="200"
+            Margin="0, 0, 0, 30"
             />
     </VerticalStackLayout>
 </ContentPage>
