@@ -5,15 +5,41 @@
              xmlns:viewmodel="clr-namespace:LoginTestAppMaui.ViewModels"
              x:DataType="viewmodel:MainViewModel"
              >
-    <HorizontalStackLayout HorizontalOptions="Center">
-        <Label
+    <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label
             Text="Hello, "
             FontSize="50"/>
-        <Label
+            <Label
             Text="{Binding Username}"
             FontSize="50"/>
-        <Label
+            <Label
             Text="!"
             FontSize="50"/>
-    </HorizontalStackLayout>
+        </HorizontalStackLayout>
+        <Button
+            Text="Call Message"
+            Command="{Binding CallMessage}"
+            FontSize="20"
+            HeightRequest="20"
+            WidthRequest="200"
+            Margin="0, 30, 0, 30"
+            />
+        <Button
+            Text="Call Question Message"
+            Command="{Binding CallQuestionMessage}"
+            FontSize="20"
+            HeightRequest="20"
+            WidthRequest="200"
+            Margin="0, 0, 0, 30"
+            />
+        <Button
+            Text="Call Options Message"
+            Command="{Binding CallOptionsMessage}"
+            FontSize="20"
+            HeightRequest="20"
+            WidthRequest="200"
+            Margin="0, 0, 0, 30"
+            />
+    </VerticalStackLayout>
 </ContentPage>
