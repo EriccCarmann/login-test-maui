@@ -51,7 +51,8 @@ namespace LoginTestAppMaui.ViewModels
                 ErrorMessageText = emptyFieldsErrorMessage;
                 
             }
-            else if (!Login.Equals("Alex"))
+            else if (!Login.Normalize()
+                        .Equals("Alex".Normalize()))
             {
                 ErrorMessageVisibility = true;
                 ErrorMessageText = matchErrorMessage;

@@ -20,4 +20,10 @@ public partial class LoginPage : ContentPage
             Shell.Current.GoToAsync("MainPage");
         }
     }
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+        _preferencesService.RemoveCurrentUserPreference();
+    }
 }
