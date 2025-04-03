@@ -18,8 +18,31 @@
                FontSize="23"
                FontFamily="JavaneseRegular"
                HorizontalTextAlignment="Center"/>
+        <Border Stroke="#800408"
+            StrokeThickness="2"
+            StrokeShape="Rectangle"
+            Background="#FFDCE0"
+            Padding="16,8"
+            Margin="0,15,0,15"
+            IsVisible="{Binding ErrorMessageVisibility}"
+            HorizontalOptions="Center">
+            <HorizontalStackLayout>
+                <Label Text="{Binding ErrorMessageText}"
+                    TextColor="#800408"
+                    FontSize="16"
+                    FontAttributes="Bold" 
+                    WidthRequest="230"/>
+                <Button
+                    Command="{Binding CloseErrorMessage}"
+                    Text="X"
+                    BackgroundColor="Transparent"
+                    TextColor="#800408"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    />
+            </HorizontalStackLayout>
+        </Border>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" 
-              Padding="20" 
               RowSpacing="5">
             <Label Grid.Row="1" 
                    Text="Login" 
