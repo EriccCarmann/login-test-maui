@@ -19,11 +19,4 @@ public partial class MainPage : ContentPage
             viewModel.GetCurrentUser();
         }
     }
-
-    protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
-    {
-        var page = Navigation.NavigationStack.LastOrDefault();
-        Navigation.RemovePage(page);
-        base.OnNavigatedFrom(args);
-    }
 }
