@@ -13,6 +13,7 @@ namespace LoginTestAppMaui.ViewModels
         private string username;
 
         public IRelayCommand CallMessage { get; set; }
+        public IRelayCommand GoBack { get; set; }
         public IAsyncRelayCommand CallQuestionMessage { get; set; }
         public IAsyncRelayCommand CallOptionsMessage { get; set; }
 
@@ -22,6 +23,7 @@ namespace LoginTestAppMaui.ViewModels
             _popUpService = popUpService;
 
             CallMessage = new RelayCommand(OnCallMessage);
+            GoBack = new RelayCommand(OnGoBack);
             CallQuestionMessage = new AsyncRelayCommand(OnCallQuestionMessage);
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
 
@@ -41,6 +43,11 @@ namespace LoginTestAppMaui.ViewModels
         private void OnCallMessage()
         {
             _popUpService.MessagePopUp("Error", "Some text to fill the box.");
+        }
+
+        private void OnGoBack()
+        {
+            Shell.Current.GoToAsync("..");
         }
 
         private async Task OnCallQuestionMessage()

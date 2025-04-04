@@ -3,8 +3,13 @@
     x:Class="LoginTestAppMaui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:local="clr-namespace:LoginTestAppMaui.Views"
-    Title="LoginTestAppMaui">
+    Title="LoginTestAppMaui"
+    >
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#508390" StatusBarStyle="LightContent" />
+    </Shell.Behaviors>
     <ShellContent
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="LoginPage" />
