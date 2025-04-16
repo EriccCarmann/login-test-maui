@@ -78,24 +78,28 @@
                 <toolkit:Expander>
                     <toolkit:Expander.Header>
                         <Label Text="Select Music Genres" 
-                               FontSize="18" />
+                               FontSize="18">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding ExpanderTapped}"/>
+                            </Label.GestureRecognizers>
+                        </Label> 
+                        
                     </toolkit:Expander.Header>
-                    <toolkit:Expander.Content>
-                        <CollectionView
-                            ItemsSource="{Binding MusicGenres}"
-                            SelectionMode="Multiple"
-                            SelectedItems="{Binding SelectedGenres}">
-                            <CollectionView.ItemTemplate>
+                    
+                    <ScrollView>
+                        <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding MusicGenres}">
+                            <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding .}"
-                                        
+                                    <Label
+                                        Text="{Binding .}"
                                         FontSize="14"
                                         Margin="10"
                                         TextColor="Black"/>
                                 </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </toolkit:Expander.Content>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
                 </toolkit:Expander>
                 <Label Text="Your genres of choice:" FontSize="14" Margin="0,20,0,0" />
                 <Label Text="{Binding SelectedGenres, StringFormat='{0: }'}" FontSize="14" />

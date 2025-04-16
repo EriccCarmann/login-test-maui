@@ -8,10 +8,7 @@ namespace LoginTestAppMaui.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        public ObservableCollection<string> MusicGenres { get; } = new ObservableCollection<string>
-        {
-            "Metal", "Rock", "Jazz", "Rap", "Pop"
-        };
+        public ObservableCollection<string> MusicGenres { get; set; } = new ObservableCollection<string>();
 
         public ObservableCollection<string> SelectedGenres { get; } = new ObservableCollection<string>();
 
@@ -23,6 +20,7 @@ namespace LoginTestAppMaui.ViewModels
 
         public IRelayCommand CallMessage { get; set; }
         public IRelayCommand GoBack { get; set; }
+        public IRelayCommand ExpanderTapped { get; }
         public IAsyncRelayCommand CallQuestionMessage { get; set; }
         public IAsyncRelayCommand CallOptionsMessage { get; set; }
 
@@ -33,10 +31,24 @@ namespace LoginTestAppMaui.ViewModels
 
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
+            ExpanderTapped = new RelayCommand(OnExpanderTapped);
             CallQuestionMessage = new AsyncRelayCommand(OnCallQuestionMessage);
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
-
+            OnPropertyChanged(nameof(MusicGenres));
             GetCurrentUser();
+        }
+
+        public void OnExpanderTapped()
+        {
+            Collection<string> newMusicGenres = new Collection<string>
+            {
+                "Metal", "Rock", "Jazz", "Rap", "Pop"
+            };
+
+            foreach (var item in newMusicGenres)
+            {
+                MusicGenres.Add(item);
+            }
         }
 
         public void GetCurrentUser()
