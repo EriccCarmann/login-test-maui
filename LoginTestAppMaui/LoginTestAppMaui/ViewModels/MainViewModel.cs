@@ -1,11 +1,20 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LoginTestAppMaui.Services.Abstract;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace LoginTestAppMaui.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
+        public ObservableCollection<string> MusicGenres { get; } = new ObservableCollection<string>
+        {
+            "Metal", "Rock", "Jazz", "Rap", "Pop"
+        };
+
+        public ObservableCollection<string> SelectedGenres { get; } = new ObservableCollection<string>();
+
         private readonly IPreferencesService _preferences;
         private readonly IPopUpService _popUpService;
 
