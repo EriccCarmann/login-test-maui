@@ -1,20 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LoginTestAppMaui.Services.Abstract;
-using LoginTestAppMaui.Models;
 using System.Collections.ObjectModel;
 
 namespace LoginTestAppMaui.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        public ObservableCollection<Genre> MusicGenres { get; } = new ObservableCollection<Genre>
+        public ObservableCollection<string> MusicGenres { get; } = new ObservableCollection<string>
         {
-            new Genre{ GenreName = "Metal"},
-            new Genre{ GenreName = "Rock"},
-            new Genre{ GenreName = "Jazz"},
-            new Genre{ GenreName = "Rap"},
-            new Genre{ GenreName = "Pop"}
+            "Metal", "Rock", "Jazz", "Rap", "Pop"
         };
 
         public ObservableCollection<string> SelectedGenres { get; } = new ObservableCollection<string>();

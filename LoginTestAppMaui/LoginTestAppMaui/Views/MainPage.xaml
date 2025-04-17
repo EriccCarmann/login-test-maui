@@ -4,7 +4,6 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LoginTestAppMaui.Views.MainPage"
              xmlns:viewmodel="clr-namespace:LoginTestAppMaui.ViewModels"
-             xmlns:models="clr-namespace:LoginTestAppMaui.Models"
              x:DataType="viewmodel:MainViewModel"
              >
     <Shell.BackButtonBehavior>
@@ -59,19 +58,18 @@
             WidthRequest="200"
             Margin="0, 0, 0, 30"
             />
-
         <HorizontalStackLayout>
             <VerticalStackLayout Margin="40,0,40,0">
                 <Picker
                     Title="Select a music genre"
                     ItemsSource="{Binding MusicGenres}"
-                    SelectedItem="{Binding SelectedGenre}"
-                    ItemDisplayBinding="{Binding GenreName}"/>
+                    SelectedItem="{Binding SelectedGenre}"/>
                 <HorizontalStackLayout>
                     <Label Text="Your genre of choice: " 
                         FontSize="12" 
                         Margin="0,20,0,0"/>
-                    <Label Text="{Binding SelectedGenre, Mode=TwoWay}" 
+                    <Label
+                        Text="{Binding SelectedGenre}" 
                         FontSize="12" 
                         Margin="0,20,0,0"/>
                 </HorizontalStackLayout>
@@ -81,10 +79,6 @@
                     <toolkit:Expander.Header>
                         <Label Text="Select Music Genres" 
                                FontSize="18">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding ExpanderTapped}"/>
-                            </Label.GestureRecognizers>
                         </Label> 
                     </toolkit:Expander.Header>
                     <toolkit:Expander.Content>
@@ -93,8 +87,8 @@
                             SelectionMode="Multiple"
                             SelectedItems="{Binding SelectedGenres}">
                             <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Genre">
-                                    <Label Text="{Binding GenreName}"
+                                <DataTemplate x:DataType="x:String">
+                                    <Label Text="{Binding .}"
                                         FontSize="14"
                                         TextColor="Black"/>
                                 </DataTemplate>
@@ -106,5 +100,5 @@
                 <Label Text="{Binding SelectedGenres, StringFormat='{0: }'}" FontSize="14" />
             </VerticalStackLayout>
         </HorizontalStackLayout>
-           </VerticalStackLayout>
+        </VerticalStackLayout>
 </ContentPage>
