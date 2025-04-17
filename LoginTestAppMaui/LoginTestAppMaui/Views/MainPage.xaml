@@ -58,47 +58,52 @@
             WidthRequest="200"
             Margin="0, 0, 0, 30"
             />
-        <HorizontalStackLayout>
-            <VerticalStackLayout Margin="40,0,40,0">
-                <Picker
-                    Title="Select a music genre"
-                    ItemsSource="{Binding MusicGenres}"
-                    SelectedItem="{Binding SelectedGenre}"/>
-                <HorizontalStackLayout>
-                    <Label Text="Your genre of choice: " 
-                        FontSize="12" 
-                        Margin="0,20,0,0"/>
-                    <Label
-                        Text="{Binding SelectedGenre}" 
-                        FontSize="12" 
-                        Margin="0,20,0,0"/>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
-            <VerticalStackLayout>
-                <toolkit:Expander>
-                    <toolkit:Expander.Header>
-                        <Label Text="Select Music Genres" 
-                               FontSize="18">
-                        </Label> 
-                    </toolkit:Expander.Header>
-                    <toolkit:Expander.Content>
-                        <CollectionView
-                            ItemsSource="{Binding MusicGenres}"
-                            SelectionMode="Multiple"
-                            SelectedItems="{Binding SelectedGenres}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate x:DataType="x:String">
-                                    <Label Text="{Binding .}"
-                                        FontSize="14"
-                                        TextColor="Black"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </toolkit:Expander.Content>
-                </toolkit:Expander>
-                <Label Text="Your genres of choice:" FontSize="14" Margin="0,20,0,0" />
-                <Label Text="{Binding SelectedGenres, StringFormat='{0: }'}" FontSize="14" />
-            </VerticalStackLayout>
-        </HorizontalStackLayout>
+        <VerticalStackLayout Margin="40,0,40,0">
+            <Picker
+         Title="Select a music genre"
+         ItemsSource="{Binding MusicGenres}"
+         SelectedItem="{Binding SelectedGenre}"/>
+            <HorizontalStackLayout>
+                <Label Text="Your genre of choice: " 
+             FontSize="12" 
+             Margin="0,20,0,0"/>
+                <Label
+             Text="{Binding SelectedGenre}" 
+             FontSize="12" 
+             Margin="0,20,0,0"/>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
+        
+        
+        <!--это не работает-->
+        <VerticalStackLayout Margin="40,10,40,0">
+            <toolkit:Expander>
+                <toolkit:Expander.Header>
+                    <Label Text="Select Music Genres" 
+                    FontSize="18">
+                    </Label>
+                </toolkit:Expander.Header>
+                <toolkit:Expander.Content>
+                    <CollectionView
+                        ItemsSource="{Binding MusicGenres}"
+                        SelectionMode="Multiple"
+                        SelectedItems="{Binding SelectedGenres, Mode=TwoWay}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Label Text="{Binding .}"
+                                    FontSize="14"
+                                    TextColor="Black"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </toolkit:Expander.Content>
+            </toolkit:Expander>
+            <Label Text="Your genres of choice:" FontSize="14" />
+            <Label Text="{Binding SelectedGenresDisplay}" FontSize="14" />
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+    <ContentPage.Resources>
+        <toolkit:ListToStringConverter x:Key="ListToString"
+                                 Separator=", " />
+    </ContentPage.Resources>
 </ContentPage>

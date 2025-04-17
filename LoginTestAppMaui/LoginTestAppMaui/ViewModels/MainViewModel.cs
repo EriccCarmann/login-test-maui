@@ -12,7 +12,7 @@ namespace LoginTestAppMaui.ViewModels
             "Metal", "Rock", "Jazz", "Rap", "Pop"
         };
 
-        public ObservableCollection<string> SelectedGenres { get; } = new ObservableCollection<string>();
+        public ObservableCollection<string> SelectedGenres = new ObservableCollection<string>();
 
         private readonly IPreferencesService _preferences;
         private readonly IPopUpService _popUpService;
@@ -21,10 +21,14 @@ namespace LoginTestAppMaui.ViewModels
         private string username;
 
         [ObservableProperty]
-        string selectedGenre;
+        private string selectedGenre;
+        
+        [ObservableProperty]
+        private string selectedGenresDisplay = "No genres selected";
 
         public IRelayCommand CallMessage { get; set; }
         public IRelayCommand GoBack { get; set; }
+        public IRelayCommand<SelectionChangedEventArgs> SelectionChangedCommand { get; }
         public IAsyncRelayCommand CallQuestionMessage { get; set; }
         public IAsyncRelayCommand CallOptionsMessage { get; set; }
 
@@ -35,9 +39,26 @@ namespace LoginTestAppMaui.ViewModels
 
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
+
+            SelectionChangedCommand = new RelayCommand<SelectionChangedEventArgs>(OnSelectionChanged);
+
             CallQuestionMessage = new AsyncRelayCommand(OnCallQuestionMessage);
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
             GetCurrentUser();
+        }
+        private void OnSelectionChanged(SelectionChangedEventArgs args)
+        {
+            // args.CurrentSelection is an IList of the selected items
+            var current = args?.CurrentSelection;
+            if (current == null)
+            {
+                SelectedGenresDisplay = "No genres selected";
+                return;
+            }
+
+            // Safe to cast now
+            var selected = current.Cast<string>().ToList();
+            SelectedGenresDisplay = string.Join(", ", selected);
         }
 
         public void GetCurrentUser()
