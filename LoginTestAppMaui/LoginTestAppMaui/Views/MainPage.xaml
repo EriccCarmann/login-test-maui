@@ -65,12 +65,13 @@
                 <Picker
                     Title="Select a music genre"
                     ItemsSource="{Binding MusicGenres}"
-                    SelectedItem="{Binding SelectedGenre}"/>
+                    SelectedItem="{Binding SelectedGenre}"
+                    ItemDisplayBinding="{Binding GenreName}"/>
                 <HorizontalStackLayout>
                     <Label Text="Your genre of choice: " 
                         FontSize="12" 
                         Margin="0,20,0,0"/>
-                    <Label Text="{Binding SelectedGenre}" 
+                    <Label Text="{Binding SelectedGenre, Mode=TwoWay}" 
                         FontSize="12" 
                         Margin="0,20,0,0"/>
                 </HorizontalStackLayout>
