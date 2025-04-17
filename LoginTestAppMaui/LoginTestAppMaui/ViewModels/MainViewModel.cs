@@ -1,14 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LoginTestAppMaui.Services.Abstract;
+using LoginTestAppMaui.Models;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace LoginTestAppMaui.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        public ObservableCollection<string> MusicGenres { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<Genre> MusicGenres { get;  } = new();
 
         public ObservableCollection<string> SelectedGenres { get; } = new ObservableCollection<string>();
 
@@ -20,7 +20,6 @@ namespace LoginTestAppMaui.ViewModels
 
         public IRelayCommand CallMessage { get; set; }
         public IRelayCommand GoBack { get; set; }
-        public IRelayCommand ExpanderTapped { get; }
         public IAsyncRelayCommand CallQuestionMessage { get; set; }
         public IAsyncRelayCommand CallOptionsMessage { get; set; }
 
@@ -31,18 +30,17 @@ namespace LoginTestAppMaui.ViewModels
 
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
-            ExpanderTapped = new RelayCommand(OnExpanderTapped);
             CallQuestionMessage = new AsyncRelayCommand(OnCallQuestionMessage);
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
-            OnPropertyChanged(nameof(MusicGenres));
             GetCurrentUser();
-        }
 
-        public void OnExpanderTapped()
-        {
-            Collection<string> newMusicGenres = new Collection<string>
+            Collection<Genre> newMusicGenres = new Collection<Genre>
             {
-                "Metal", "Rock", "Jazz", "Rap", "Pop"
+                new Genre{ GenreName = "Metal"},
+                new Genre{ GenreName = "Rock"},
+                new Genre{ GenreName = "Jazz"},
+                new Genre{ GenreName = "Rap"},
+                new Genre{ GenreName = "Pop"}
             };
 
             foreach (var item in newMusicGenres)

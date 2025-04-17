@@ -19,15 +19,6 @@ public partial class MainPage : ContentPage
         if (BindingContext is MainViewModel viewModel)
         {
             viewModel.GetCurrentUser();
-            Collection<string> newMusicGenres = new Collection<string>
-            {
-                "Metal", "Rock", "Jazz", "Rap", "Pop"
-            };
-
-            foreach (var item in newMusicGenres)
-            {
-                viewModel.MusicGenres.Add(item);
-            }
         }
     }
 }

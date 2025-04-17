@@ -1,4 +1,4 @@
-﻿namespace LoginTestAppMaui
+﻿namespace LoginTestAppMaui.Models
 {
     public class Genre
     {
