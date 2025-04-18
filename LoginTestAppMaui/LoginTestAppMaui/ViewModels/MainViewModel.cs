@@ -29,7 +29,6 @@ namespace LoginTestAppMaui.ViewModels
 
         public IRelayCommand CallMessage { get; set; }
         public IRelayCommand GoBack { get; set; }
-        public IRelayCommand<SelectionChangedEventArgs> SelectionChangedCommand { get; }
         public IAsyncRelayCommand CallQuestionMessage { get; set; }
         public IAsyncRelayCommand CallOptionsMessage { get; set; }
 
@@ -44,25 +43,9 @@ namespace LoginTestAppMaui.ViewModels
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
 
-            SelectionChangedCommand = new RelayCommand<SelectionChangedEventArgs>(OnSelectionChanged);
-
             CallQuestionMessage = new AsyncRelayCommand(OnCallQuestionMessage);
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
             GetCurrentUser();
-        }
-        private void OnSelectionChanged(SelectionChangedEventArgs args)
-        {
-            // args.CurrentSelection is an IList of the selected items
-            var current = args?.CurrentSelection;
-            if (current == null)
-            {
-                SelectedGenresDisplay = Constants.NoGenres;
-                return;
-            }
-
-            // Safe to cast now
-            var selected = current.Cast<string>().ToList();
-            SelectedGenresDisplay = string.Join(", ", selected);
         }
 
         public void GetCurrentUser()

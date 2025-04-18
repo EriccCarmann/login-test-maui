@@ -2,7 +2,7 @@
 
 namespace LoginTestAppMaui.Services.Implementation
 {
-    class NavigationService : INavigationService
+    public class NavigationService : INavigationService
     {
         public void GoBack()
         {

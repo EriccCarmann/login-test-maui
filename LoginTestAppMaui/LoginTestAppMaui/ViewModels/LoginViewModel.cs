@@ -29,9 +29,6 @@ namespace LoginTestAppMaui.ViewModels
 
         private readonly IPreferencesService _preferences;
 
-        private string matchErrorMessage = "The information you entered does not match our record.";
-        private string emptyFieldsErrorMessage = "Make sure that all of the fields are not empty.";
-
         public LoginViewModel(IPreferencesService preferences)
         {
             LoginCommand = new RelayCommand(OnLoginCommand);
@@ -48,13 +45,13 @@ namespace LoginTestAppMaui.ViewModels
                 string.IsNullOrEmpty(Password))
             {
                 ErrorMessageVisibility = true;
-                ErrorMessageText = emptyFieldsErrorMessage;
+                ErrorMessageText = Constants.EmptyFieldsErrorMessage;
                 
             }
             else if (!Login.Equals("Alex"))
             {
                 ErrorMessageVisibility = true;
-                ErrorMessageText = matchErrorMessage;
+                ErrorMessageText = Constants.MatchErrorMessage;
             }
             else
             {

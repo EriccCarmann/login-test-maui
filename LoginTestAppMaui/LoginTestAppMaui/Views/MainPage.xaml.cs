@@ -13,6 +13,14 @@ public partial class MainPage : ContentPage
         BindingContext = viewModel;
         UpdateSelectionData(Enumerable.Empty<string>());
     }
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+        if (BindingContext is MainViewModel viewModel)
+        {
+            viewModel.GetCurrentUser();
+        }
+    }
 
     void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -24,7 +32,8 @@ public partial class MainPage : ContentPage
         var current = ToList(currentSelectedItems);
         currentSelectedItemLabel.Text = string.IsNullOrWhiteSpace(current) ? "[none]" : current;
     }
-        static string ToList(IEnumerable<object> items)
+
+    static string ToList(IEnumerable<object> items)
     {
         if (items == null)
         {
@@ -32,14 +41,5 @@ public partial class MainPage : ContentPage
         }
 
         return items.Aggregate(string.Empty, (sender, obj) => sender + (sender.Length == 0 ? "" : ", ") + ((string)obj));
-    }
-
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
-    {
-        base.OnNavigatedTo(args);
-        if (BindingContext is MainViewModel viewModel)
-        {
-            viewModel.GetCurrentUser();
-        }
     }
 }
