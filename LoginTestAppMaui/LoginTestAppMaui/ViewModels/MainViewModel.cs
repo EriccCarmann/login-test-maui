@@ -52,7 +52,7 @@ namespace LoginTestAppMaui.ViewModels
             var current = args?.CurrentSelection;
             if (current == null)
             {
-                SelectedGenresDisplay = "No genres selected";
+                SelectedGenresDisplay = Constants.NoGenres;
                 return;
             }
 
@@ -73,7 +73,7 @@ namespace LoginTestAppMaui.ViewModels
 
         private void OnCallMessage()
         {
-            _popUpService.MessagePopUp("Error", "Some text to fill the box.");
+            _popUpService.MessagePopUp("Error", Constants.SampleText);
         }
 
         private void OnGoBack()
@@ -83,7 +83,7 @@ namespace LoginTestAppMaui.ViewModels
 
         private async Task OnCallQuestionMessage()
         {
-            bool result = await _popUpService.QuestionPopUp("Question", "This is a question message. Click yes or no.");
+            bool result = await _popUpService.QuestionPopUp("Question", Constants.QuestionText);
 
             if (result == true)
             {
