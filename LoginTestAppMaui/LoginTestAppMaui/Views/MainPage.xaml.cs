@@ -1,16 +1,20 @@
-﻿using LoginTestAppMaui.ViewModels;
+﻿using LoginTestAppMaui.Services.Abstract;
+using LoginTestAppMaui.ViewModels;
 
 namespace LoginTestAppMaui.Views;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage(MainViewModel viewModel)
+    private readonly IStringService _stringService;
+
+    public MainPage(MainViewModel viewModel, IStringService stringService)
     {
         InitializeComponent();
+        _stringService = stringService;
 
         BindingContext = viewModel;
+        UpdateSelectionData(Enumerable.Empty<string>());
     }
-
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
@@ -20,10 +24,14 @@ public partial class MainPage : ContentPage
         }
     }
 
-    protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+    void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var page = Navigation.NavigationStack.LastOrDefault();
-        Navigation.RemovePage(page);
-        base.OnNavigatedFrom(args);
+        UpdateSelectionData(e.CurrentSelection);
+    }
+
+    void UpdateSelectionData(IEnumerable<object> currentSelectedItems)
+    {
+        var current = _stringService.ToList(currentSelectedItems);
+        currentSelectedItemLabel.Text = _stringService.CheckStringNullOrWhiteSpace(current);
     }
 }
