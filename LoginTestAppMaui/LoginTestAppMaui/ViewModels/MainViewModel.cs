@@ -16,6 +16,7 @@ namespace LoginTestAppMaui.ViewModels
 
         private readonly IPreferencesService _preferences;
         private readonly IPopUpService _popUpService;
+        private readonly INavigationService _navigationService;
 
         [ObservableProperty]
         private string username;
@@ -32,10 +33,13 @@ namespace LoginTestAppMaui.ViewModels
         public IAsyncRelayCommand CallQuestionMessage { get; set; }
         public IAsyncRelayCommand CallOptionsMessage { get; set; }
 
-        public MainViewModel(IPreferencesService preferencesService, IPopUpService popUpService)
+        public MainViewModel(IPreferencesService preferencesService, 
+                             IPopUpService popUpService, 
+                             INavigationService navigationService)
         {
             _preferences = preferencesService;
             _popUpService = popUpService;
+            _navigationService = navigationService;
 
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
@@ -78,7 +82,7 @@ namespace LoginTestAppMaui.ViewModels
 
         private void OnGoBack()
         {
-            Shell.Current.GoToAsync("..");
+            _navigationService.GoBack();
         }
 
         private async Task OnCallQuestionMessage()

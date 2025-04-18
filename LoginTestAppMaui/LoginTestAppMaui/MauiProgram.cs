@@ -24,6 +24,7 @@ namespace LoginTestAppMaui
 
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
             builder.Services.AddSingleton<IPopUpService, PopUpService>();
+            builder.Services.AddSingleton<INavigationService, NavigationService>();
 
             builder.Services.AddTransientWithShellRoute<LoginPage, LoginViewModel>(nameof(LoginPage));
             builder.Services.AddTransientWithShellRoute<MainPage, MainViewModel>(nameof(MainPage));
