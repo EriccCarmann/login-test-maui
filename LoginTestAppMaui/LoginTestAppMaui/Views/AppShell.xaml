@@ -16,10 +16,10 @@
             ContentTemplate="{DataTemplate local:MainPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="MainPage" Icon="back_button.png">
+    <FlyoutItem Title="VideoPage" Icon="back_button.png">
         <ShellContent
-            Title="MainPage"
-            Route="MainPage"
-            ContentTemplate="{DataTemplate local:MainPage}" />
+            Title="VideoPage"
+            Route="VideoPage"
+            ContentTemplate="{DataTemplate local:VideoPage}" />
     </FlyoutItem>
 </Shell>

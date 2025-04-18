@@ -4,6 +4,7 @@ using LoginTestAppMaui.Services.Implementation;
 using LoginTestAppMaui.ViewModels;
 using LoginTestAppMaui.Views;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Hosting;
 
 namespace LoginTestAppMaui
 {
@@ -15,12 +16,14 @@ namespace LoginTestAppMaui
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("JAVATEXT.ttf", "JavaneseRegular");
-                });
+                })
+                .UseMauiMaps();
 
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
             builder.Services.AddSingleton<IPopUpService, PopUpService>();
