@@ -42,9 +42,9 @@ namespace LoginTestAppMaui.ViewModels
 
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
-
             CallQuestionMessage = new AsyncRelayCommand(OnCallQuestionMessage);
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
+
             GetCurrentUser();
         }
 

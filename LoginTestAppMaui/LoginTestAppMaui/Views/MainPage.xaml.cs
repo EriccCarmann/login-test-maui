@@ -11,7 +11,6 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         _stringService = stringService;
-
         BindingContext = viewModel;
         UpdateSelectionData(Enumerable.Empty<string>());
     }

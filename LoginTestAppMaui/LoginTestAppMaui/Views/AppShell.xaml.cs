@@ -12,8 +12,6 @@ namespace LoginTestAppMaui
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-
         }
     }
 }
