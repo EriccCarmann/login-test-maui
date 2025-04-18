@@ -14,11 +14,6 @@ public partial class LoginPage : ContentPage
 		BindingContext = loginViewModel;
 
         _preferencesService = preferencesService;
-
-        if (!string.IsNullOrEmpty(_preferencesService.GetCurrentUserPreference()))
-        {
-            Shell.Current.GoToAsync("MainPage");
-        }
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs args)

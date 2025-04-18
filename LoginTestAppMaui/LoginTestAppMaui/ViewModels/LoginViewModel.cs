@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LoginTestAppMaui.Services.Abstract;
-using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Core;
 
 namespace LoginTestAppMaui.ViewModels
 {
@@ -28,12 +26,15 @@ namespace LoginTestAppMaui.ViewModels
         public IRelayCommand CloseErrorMessage { get; }
 
         private readonly IPreferencesService _preferences;
+        private readonly INavigationService _navigationService;
 
-        public LoginViewModel(IPreferencesService preferences)
+        public LoginViewModel(IPreferencesService preferences,
+                              INavigationService navigationService)
         {
             LoginCommand = new RelayCommand(OnLoginCommand);
             CloseErrorMessage = new RelayCommand(OnCloseErrorMessage);
             _preferences = preferences;
+            _navigationService = navigationService;
 
             ErrorMessageVisibility = false;
         }
@@ -57,7 +58,7 @@ namespace LoginTestAppMaui.ViewModels
             {
                 ErrorMessageVisibility = false;
                 _preferences.SetStringPreference(Login);
-                Shell.Current.GoToAsync("MainPage");
+                _navigationService.GoToAppShell();
             }
         }
 

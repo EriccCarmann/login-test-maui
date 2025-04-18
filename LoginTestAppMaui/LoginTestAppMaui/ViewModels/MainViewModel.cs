@@ -42,9 +42,9 @@ namespace LoginTestAppMaui.ViewModels
 
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
-
             CallQuestionMessage = new AsyncRelayCommand(OnCallQuestionMessage);
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
+
             GetCurrentUser();
         }
 
@@ -65,7 +65,7 @@ namespace LoginTestAppMaui.ViewModels
 
         private void OnGoBack()
         {
-            _navigationService.GoBack();
+            _navigationService.GoToLogin();
         }
 
         private async Task OnCallQuestionMessage()

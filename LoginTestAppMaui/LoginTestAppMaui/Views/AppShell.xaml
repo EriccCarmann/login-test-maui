@@ -1,16 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="LoginTestAppMaui.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:local="clr-namespace:LoginTestAppMaui.Views"
-    Title="LoginTestAppMaui"
-    >
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:LoginTestAppMaui.Views"
+       x:Class="LoginTestAppMaui.AppShell"
+       xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+       Title="LoginTestAppMaui"
+       FlyoutBehavior="Flyout">
     <Shell.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="#508390" StatusBarStyle="LightContent" />
     </Shell.Behaviors>
-    <ShellContent
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
+
+    <FlyoutItem Title="MainPage" Icon="back_button.png">
+        <ShellContent
+            Title="MainPage"
+            Route="MainPage"
+            ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="MainPage" Icon="back_button.png">
+        <ShellContent
+            Title="MainPage"
+            Route="MainPage"
+            ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
 </Shell>
