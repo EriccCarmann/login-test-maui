@@ -10,8 +10,6 @@ namespace LoginTestAppMaui
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-
             if (string.IsNullOrEmpty(preferencesService.GetCurrentUserPreference()))
             {
                 MainPage = loginPage;

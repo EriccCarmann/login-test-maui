@@ -8,11 +8,6 @@ namespace LoginTestAppMaui
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
     }
 }
  

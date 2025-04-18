@@ -65,7 +65,7 @@ namespace LoginTestAppMaui.ViewModels
 
         private void OnGoBack()
         {
-            _navigationService.GoBack();
+            _navigationService.GoToLogin();
         }
 
         private async Task OnCallQuestionMessage()

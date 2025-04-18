@@ -8,8 +8,7 @@
              x:DataType="viewmodel:LoginViewModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              HideSoftInputOnTapped="True"
-             Shell.NavBarIsVisible="False"
-             >
+             Shell.NavBarIsVisible="False">
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="#508390" StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
