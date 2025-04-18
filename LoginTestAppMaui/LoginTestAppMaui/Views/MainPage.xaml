@@ -65,18 +65,13 @@
          SelectedItem="{Binding SelectedGenre}"/>
             <HorizontalStackLayout>
                 <Label Text="Your genre of choice: " 
-             FontSize="12" 
-             Margin="0,20,0,0"/>
+             FontSize="12"/>
                 <Label
              Text="{Binding SelectedGenre}" 
-             FontSize="12" 
-             Margin="0,20,0,0"/>
+             FontSize="12"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
-        
-        
-        <!--это не работает-->
-        <VerticalStackLayout Margin="40,10,40,0">
+        <VerticalStackLayout Margin="40,20,40,0">
             <toolkit:Expander>
                 <toolkit:Expander.Header>
                     <Label Text="Select Music Genres" 
@@ -87,23 +82,33 @@
                     <CollectionView
                         ItemsSource="{Binding MusicGenres}"
                         SelectionMode="Multiple"
-                        SelectedItems="{Binding SelectedGenres, Mode=TwoWay}">
+                        SelectionChanged="OnCollectionViewSelectionChanged">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
-                                <Label Text="{Binding .}"
-                                    FontSize="14"
-                                    TextColor="Black"/>
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding .}"
+                                        FontSize="14"
+                                        TextColor="Black"/>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Normal"></VisualState>
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="#508390"></Setter>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </VerticalStackLayout>
+                                
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
+
                     </CollectionView>
                 </toolkit:Expander.Content>
             </toolkit:Expander>
             <Label Text="Your genres of choice:" FontSize="14" />
-            <Label Text="{Binding SelectedGenresDisplay}" FontSize="14" />
+            <Label x:Name="currentSelectedItemLabel" FontSize="14" />
         </VerticalStackLayout>
     </VerticalStackLayout>
-    <ContentPage.Resources>
-        <toolkit:ListToStringConverter x:Key="ListToString"
-                                 Separator=", " />
-    </ContentPage.Resources>
 </ContentPage>
