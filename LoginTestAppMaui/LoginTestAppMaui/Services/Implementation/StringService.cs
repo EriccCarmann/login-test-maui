@@ -9,6 +9,11 @@ namespace LoginTestAppMaui.Services.Implementation
 {
     public class StringService : IStringService
     {
+        public string CheckStringNullOrWhiteSpace(string current)
+        {
+            return string.IsNullOrWhiteSpace(current) ? "[none]" : current;
+        }
+
         public string ToList(IEnumerable<object> items)
         {
             if (items == null)
