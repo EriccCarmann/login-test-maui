@@ -1,13 +1,11 @@
 ﻿using LoginTestAppMaui.Services.Abstract;
 using LoginTestAppMaui.ViewModels;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace LoginTestAppMaui.Views;
 
 public partial class MainPage : ContentPage
 {
-    IStringService _stringService;
+    private readonly IStringService _stringService;
 
     public MainPage(MainViewModel viewModel, IStringService stringService)
     {
