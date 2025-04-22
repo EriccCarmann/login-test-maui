@@ -5,6 +5,7 @@ using LoginTestAppMaui.ViewModels;
 using LoginTestAppMaui.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Hosting;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace LoginTestAppMaui
 {
@@ -13,6 +14,7 @@ namespace LoginTestAppMaui
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
@@ -22,7 +24,9 @@ namespace LoginTestAppMaui
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("JAVATEXT.ttf", "JavaneseRegular");
                 })
-                .UseMauiCommunityToolkitMediaElement();
+                .UseMauiCommunityToolkitMediaElement()
+                .UseSkiaSharp(true)
+                ;
 
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
             builder.Services.AddSingleton<IPopUpService, PopUpService>();

@@ -22,6 +22,10 @@
             Icon="back_button.png">
             <ShellContent ContentTemplate="{DataTemplate local:WebViewPage}" />
         </Tab>
+        <Tab Title="Map"
+            Icon="back_button.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MapPage}" />
+        </Tab>
     </TabBar>
     
     <FlyoutItem Title="MainPage" Icon="back_button.png">
@@ -43,5 +47,12 @@
         Title="WebViewPage"
         Route="WebViewPage"
         ContentTemplate="{DataTemplate local:WebViewPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="MapPage" Icon="back_button.png">
+        <ShellContent
+        Title="MapPage"
+        Route="MapPage"
+        ContentTemplate="{DataTemplate local:MapPage}" />
     </FlyoutItem>
 </Shell>
