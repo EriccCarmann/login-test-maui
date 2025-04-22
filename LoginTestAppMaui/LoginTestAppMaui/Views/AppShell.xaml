@@ -22,4 +22,11 @@
             Route="VideoPage"
             ContentTemplate="{DataTemplate local:VideoPage}" />
     </FlyoutItem>
+
+    <FlyoutItem Title="WebViewPage" Icon="back_button.png">
+        <ShellContent
+        Title="WebViewPage"
+        Route="WebViewPage"
+        ContentTemplate="{DataTemplate local:WebViewPage}" />
+    </FlyoutItem>
 </Shell>
