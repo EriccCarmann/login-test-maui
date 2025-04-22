@@ -8,7 +8,22 @@
     <Shell.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="#508390" StatusBarStyle="LightContent" />
     </Shell.Behaviors>
-
+    
+    <TabBar>
+        <Tab Title="Main"
+            Icon="back_button.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Video"
+            Icon="back_button.png">
+            <ShellContent ContentTemplate="{DataTemplate local:VideoPage}" />
+        </Tab>
+        <Tab Title="Web"
+            Icon="back_button.png">
+            <ShellContent ContentTemplate="{DataTemplate local:WebViewPage}" />
+        </Tab>
+    </TabBar>
+    
     <FlyoutItem Title="MainPage" Icon="back_button.png">
         <ShellContent
             Title="MainPage"
