@@ -16,14 +16,13 @@ namespace LoginTestAppMaui
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
-                .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("JAVATEXT.ttf", "JavaneseRegular");
                 })
-                .UseMauiMaps();
+                .UseMauiCommunityToolkitMediaElement();
 
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
             builder.Services.AddSingleton<IPopUpService, PopUpService>();
