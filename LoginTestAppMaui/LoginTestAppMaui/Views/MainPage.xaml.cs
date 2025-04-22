@@ -6,19 +6,26 @@ namespace LoginTestAppMaui.Views;
 public partial class MainPage : ContentPage
 {
     private readonly IStringService _stringService;
+    private readonly INasaService _nasaService;
 
-    public MainPage(MainViewModel viewModel, IStringService stringService)
+    public MainPage(MainViewModel viewModel, IStringService stringService, INasaService nasaService)
     {
         InitializeComponent();
-        _stringService = stringService;
+
         BindingContext = viewModel;
+
+        _stringService = stringService;
+        _nasaService = nasaService;
+
         UpdateSelectionData(Enumerable.Empty<string>());
     }
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
+       
         if (BindingContext is MainViewModel viewModel)
         {
+            _nasaService.GetAsteroids();
             viewModel.GetCurrentUser();
         }
     }
