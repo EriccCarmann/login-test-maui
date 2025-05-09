@@ -25,14 +25,14 @@ namespace LoginTestAppMaui
                     fonts.AddFont("JAVATEXT.ttf", "JavaneseRegular");
                 })
                 .UseMauiCommunityToolkitMediaElement()
-                .UseSkiaSharp(true)
-                ;
-
+                .UseSkiaSharp(true);
+            
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
             builder.Services.AddSingleton<IPopUpService, PopUpService>();
             builder.Services.AddSingleton<INavigationService, NavigationService>();
             builder.Services.AddSingleton<IStringService, StringService>();
-
+            builder.Services.AddSingleton<IStrapiService, StrapiService>();
+            
             builder.Services.AddTransientWithShellRoute<LoginPage, LoginViewModel>(nameof(LoginPage));
             builder.Services.AddTransientWithShellRoute<MainPage, MainViewModel>(nameof(MainPage));
 

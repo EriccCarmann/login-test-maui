@@ -17,7 +17,8 @@ namespace LoginTestAppMaui.ViewModels
         private readonly IPreferencesService _preferences;
         private readonly IPopUpService _popUpService;
         private readonly INavigationService _navigationService;
-
+        private readonly IStrapiService _strapiService;
+        
         [ObservableProperty]
         private string username;
 
@@ -34,11 +35,13 @@ namespace LoginTestAppMaui.ViewModels
 
         public MainViewModel(IPreferencesService preferencesService, 
                              IPopUpService popUpService, 
-                             INavigationService navigationService)
+                             INavigationService navigationService,
+                             IStrapiService strapiService)
         {
             _preferences = preferencesService;
             _popUpService = popUpService;
             _navigationService = navigationService;
+            _strapiService = strapiService;
 
             CallMessage = new RelayCommand(OnCallMessage);
             GoBack = new RelayCommand(OnGoBack);
@@ -46,6 +49,18 @@ namespace LoginTestAppMaui.ViewModels
             CallOptionsMessage = new AsyncRelayCommand(OnCallOptionsMessage);
 
             GetCurrentUser();
+
+            GetArticles();
+        }
+
+        private async Task GetArticles()
+        {
+            var articles = await _strapiService.GetArticlesAsync();
+
+            foreach (var article in articles)
+            {
+                Console.WriteLine(article.Title);
+            }
         }
 
         public void GetCurrentUser()
