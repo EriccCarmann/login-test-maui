@@ -4,7 +4,6 @@ using LoginTestAppMaui.Services.Implementation;
 using LoginTestAppMaui.ViewModels;
 using LoginTestAppMaui.Views;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls.Hosting;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace LoginTestAppMaui
@@ -30,9 +29,7 @@ namespace LoginTestAppMaui
             builder.Services.AddSingleton<IPreferencesService, PreferencesService>();
             builder.Services.AddSingleton<IPopUpService, PopUpService>();
             builder.Services.AddSingleton<INavigationService, NavigationService>();
-            builder.Services.AddSingleton<IStringService, StringService>();
-            builder.Services.AddSingleton<IStrapiService, StrapiService>();
-            
+           
             builder.Services.AddTransientWithShellRoute<LoginPage, LoginViewModel>(nameof(LoginPage));
             builder.Services.AddTransientWithShellRoute<MainPage, MainViewModel>(nameof(MainPage));
 
